@@ -143,3 +143,4 @@ void ISR(){
   currentDelay /= 2;
 }
 */
+//INTERRUPT KODE HER
