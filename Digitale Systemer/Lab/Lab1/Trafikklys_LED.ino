@@ -73,7 +73,6 @@ void switchLights(int grStolpe[], int rStolpe[]){
   digitalWrite(grStolpe[1], LOW);   //Skrur av gul
   digitalWrite(grStolpe[0], HIGH);  //Skrur på rød
   delay(switchDelay);
-  digitalWrite(grStolpe[3], LOW);   //Skrur av rød mann.
   
   //Setter stolpe som var rød til grønn
   digitalWrite(rStolpe[1], HIGH);   //Skrur på gul
@@ -81,6 +80,7 @@ void switchLights(int grStolpe[], int rStolpe[]){
   digitalWrite(rStolpe[0], LOW);    //Skrur av rød
   digitalWrite(rStolpe[1], LOW);    //Skrur av gul
   digitalWrite(rStolpe[2], HIGH);   //Skrur på grønn
+  digitalWrite(grStolpe[3], LOW);   //Skrur av rød mann.
   digitalWrite(grStolpe[4], HIGH);  //Skrur på grønn mann
 }
 
