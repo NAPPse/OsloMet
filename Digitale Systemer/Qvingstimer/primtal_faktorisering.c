@@ -32,7 +32,7 @@ int main(void){
 }
 
 int faktoriser(int x){
-    for(int i=0; i<x; i++){
+    for(int i=0; i<=x; i++){//Her lå feilen. Den var "i<x" skal være "i<=x"
         if(primtall(i)==1){
             while(x%i==0){
                 x /= i;
