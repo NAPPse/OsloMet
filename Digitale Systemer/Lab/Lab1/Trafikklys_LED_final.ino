@@ -2,31 +2,34 @@
 const int rb1=11,rb2=4,gu1=12,gu2=5,grb1=13,grb2=6,
           rf1=10,rf2=7,gf1=9,gf2=8,k1=2,k2=3;
 
+//Definerer stolper
 const int stolpe1[5] = {rb1, gu1, grb1, rf1, gf1},
           stolpe2[5] = {rb2, gu2, grb2, rf2, gf2};
 
+//Skal brukes for å sjekke om tiden allerede er halvert
 bool half_toggled = false;
 
+//Definerer delays
 const int hVeiDelay = 15000,
-		  sVeiDelay = 10000,
-		  switchDelay = 1500,
- 		  gulDelay = 2500;
+	  sVeiDelay = 10000,
+	  switchDelay = 1500,
+	  gulDelay = 2500;
 
 // Variabel for nåværende delay
 int currentDelay;
 
+//Her skal koden for interrupt på knapp1
 void isr(){
   Serial.println("Pressed!");
 }
 
 void setup(){
-  
   //Setter lys-pins til output
   for (int i=4; i<14; i++){
     pinMode(i, OUTPUT);
   }
   
-  //Setter k1 til interrupt
+  //Setter k1 og k2 til interrupt
   Serial.begin(9600);
   delay(200);
   attachInterrupt(digitalPinToInterrupt(k1), isr, FALLING);
@@ -36,8 +39,7 @@ void setup(){
   digitalWrite(rb2, HIGH);  //Rødt lys sidevei
   digitalWrite(gf2, HIGH);  //Grønn mann sidevei
   digitalWrite(rf1, HIGH);  //Rød mann hovedvei
-  currentDelay = hVeiDelay;
-  delay(2000);
+  currentDelay = hVeiDelay; //Setter nåværende delay
 }
 
 void loop(){
