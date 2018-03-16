@@ -1,4 +1,5 @@
 #include <Stepper.h>
+#include <ctype.h>
 
 const int STEPS_REV 648;
 Stepper stepper(STEPS_REV, 8, 9, 10, 11);
@@ -16,7 +17,7 @@ void loop() {
   for(int i=0; i<=1; i++) {
     String dir = Serial.readStringUntil(' ');
     int steps = Serial.readStringUntil('\n').toInt();
-    if(dir == "right" || dir == "speed" || dir == "left" && 0 < steps){
+    if(dir == "right" || dir == "speed" || dir == "left" && isdigit(steps) == 1 && 0 < steps){
       Serial.print("Dir/Speed:\t");
       Serial.println(dir);
       Serial.print("Steps/Value:\t");
@@ -26,7 +27,6 @@ void loop() {
     }
     else{
       Serial.println("Ugyldig kommando!");
-      loop();
     }
   }
 }
@@ -43,6 +43,7 @@ void stepper_cmd(const char dir, int steps){
       break;
     default:
       Serial.println("Kjører høyre..");
-   } 
+      break;
+   }
    stepper.step(steps);
 }
