@@ -31,20 +31,18 @@ void loop() {
   }
 }
 
-void stepper_cmd(char dir, int steps){
+void stepper_cmd(const char dir, int steps){
   switch(dir){
     case 's':
-    Serial.println("Setter hastighet..");
+      Serial.println("Setter hastighet..");
       stepper.setSpeed(steps);
       break;
-    default:
-      Serial.println("Setter rettning..");
-      switch(dir){
-        case 'l':
-          steps *= -1;
-          break;
-      } 
-      stepper.step(steps);
+    case 'l':
+      Serial.println("Kjører venstre..");
+      steps *= -1;
       break;
-  }
+    default:
+      Serial.println("Kjører høyre..");
+   } 
+   stepper.step(steps);
 }
