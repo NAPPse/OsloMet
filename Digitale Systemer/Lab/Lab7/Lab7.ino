@@ -16,7 +16,7 @@ void loop() {
   for(int i=0; i<=1; i++) {
     String dir = Serial.readStringUntil(' ');
     int steps = Serial.readStringUntil('\n').toInt();
-    if(dir == "right" || dir == "speed" || dir == "left" && 0 < steps && steps < 256){
+    if(dir == "right" || dir == "speed" || dir == "left" && 0 < steps){
       Serial.print("Dir/Speed:\t");
       Serial.println(dir);
       Serial.print("Steps/Value:\t");
