@@ -5,9 +5,10 @@ canvas.height = canvas.scrollHeight;
 
 var ctx = canvas.getContext('2d');
 
+
 function binViewUnit(x, y, size, chujwieco, a, f) {
   ctx.beginPath();
-  ctx.lineWidth = 2;
+  ctx.lineWidth = 0;
   ctx.strokeStyle = '#000';
   ctx.rect(x,y,sizeb,sizeb);
   ctx.stroke();
@@ -38,7 +39,7 @@ function isTime(a) {
       return (t.length == 1) ? "0" + t : t;
     },
 
-    D = new Date()
+    D = new Date(unixTime*1000)
   hr = padT(D.getHours()),
     mn = padT(D.getMinutes()),
     se = padT(D.getSeconds()),
@@ -76,9 +77,15 @@ function drawRactangle(x, y, X, Y, scolor, bgcolor) {
   lT(ctx, x, yY);
   lT(ctx, x, y);
 
-  ctx.stroke();
+  //ctx.stroke();
   ctx.fillStyle = bgcolor;
   ctx.fill();
+}
+
+function drawDiffuser(){
+  //ctx.fillStyle="#FFF";
+  ctx.fillStyle = "rgba(255, 255, 255, 0.6)";
+  ctx.fillRect(12,12,125,84);
 }
 
 function drawClock() {
@@ -89,10 +96,10 @@ function drawClock() {
     16: 0
   };
 
-  var initialX = 10;
-  var initialY = 10;
-  var horizontalInterval = sizeb+2;
-  var verticalInteval = sizeb+2;
+  var initialX = 12;
+  var initialY = 12;
+  var horizontalInterval = sizeb+1;
+  var verticalInteval = sizeb+1;
 
   var mapIndex = 0;
   for (var i = initialX; i <= horizontalInterval * 5 + initialX; i += horizontalInterval) {
@@ -105,6 +112,8 @@ function drawClock() {
     }
   }
 }
+
+
 
 function loop() {
   ctx.clearRect(0, 0, c.width, c.height);
@@ -119,7 +128,7 @@ function loop() {
   
   ctx.beginPath();
   ctx.moveTo(0,106);
-  ctx.lineTo(50,50);
+  ctx.lineTo(60,50);
   ctx.stroke();
   
   ctx.beginPath();
@@ -129,14 +138,17 @@ function loop() {
   
   ctx.beginPath();
   ctx.moveTo(150,106);
-  ctx.lineTo(130,86);
+  ctx.lineTo(125,86);
   ctx.stroke();
   
   drawClock();
+  drawDiffuser();
   setTimeout(loop, 1000);
+  unixTime+=1;
 }
 
 loop();
+
 
 function showValue(newValue){
   document.getElementById('range').innerHTML=(newValue*100/255).toFixed(0) + '%';
@@ -149,4 +161,8 @@ function switcharoo(){
 	var oL = L.value;
 	L.value=oH;
 	H.value=oL;
+}
+
+function openVis(){
+  window.open('visualizer://', '_blank');
 }
