@@ -142,7 +142,7 @@ function loop() {
   ctx.stroke();
   
   drawClock();
-  drawDiffuser();
+  //drawDiffuser();
   setTimeout(loop, 1000);
   unixTime+=1;
 }
