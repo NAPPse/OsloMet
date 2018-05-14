@@ -38,11 +38,12 @@ function isTime(a) {
       return (t.length == 1) ? "0" + t : t;
     },
 
-    D = new Date()
+    //D = new Date()
+      D = new Date(unixTime*1000)
   hr = padT(D.getHours()),
-    mn = padT(D.getMinutes()),
-    se = padT(D.getSeconds()),
-    document.getElementById('hr').innerHTML=hr[0]+' '+hr[1];
+  mn = padT(D.getMinutes()),
+  se = padT(D.getSeconds()),
+  document.getElementById('hr').innerHTML=hr[0]+' '+hr[1];
   document.getElementById('mn').innerHTML=mn[0]+' '+mn[1];
   document.getElementById('se').innerHTML=se[0]+' '+se[1];
   
