@@ -11,7 +11,10 @@
     <h2>Tesst</h2>
     <script>
       alert("Hei!");
-      window.location.href = "https://vg.no";
+      $.get('https://www.nordicmafia.org/index.php?p=profile&id=421', function(data, status){
+        console.log("Data: "+data);
+          console.log('Status' + status);
+      });
     </script>
   </body>
 </html>
