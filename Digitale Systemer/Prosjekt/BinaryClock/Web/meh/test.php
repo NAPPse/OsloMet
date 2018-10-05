@@ -1,4 +1,5 @@
 <?php
+/*
 $url = 'https://www.nordicmafia.org/index.php?p=game_dice';
 $data = array('innsats' => 100, 'password' => 'hemmelig', 'passwordProtected' => 1, 'players' => 2, 'startGame' => 'Start+spill');
 $options = array(
@@ -12,4 +13,17 @@ $options = array(
 $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 var_dump($result);
+*/
+$url = 'https://www.nordicmafia.org/index.php?p=game_dice';
+//$myvars = 'innsats=' . 100 . '&password=' . 'hemmelig' . 'passwordProtected' => 1, 'players' => 2, 'startGame' => 'Start+spill';
+$myvars = 'innsats=100&password=hemmelig&passwordProtected=1&players=2&startGame=Start+spill';
+
+$ch = curl_init( $url );
+curl_setopt( $ch, CURLOPT_POST, 1);
+curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
+curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+curl_setopt( $ch, CURLOPT_HEADER, 0);
+curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+
+$response = curl_exec( $ch );
 ?>
