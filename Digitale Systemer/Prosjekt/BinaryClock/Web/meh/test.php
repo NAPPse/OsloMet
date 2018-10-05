@@ -1,6 +1,6 @@
 <?php
 $url = 'https://www.nordicmafia.org/index.php?p=game_dice';
-$data = array('innsats' => '100', 'password' => 'hemmelig', 'passwordProtected' => '1', 'players' => '2', 'startGame' => 'Start+spill');
+$data = array('innsats' => 100, 'password' => 'hemmelig', 'passwordProtected' => 1, 'players' => 2, 'startGame' => 'Start+spill');
 $options = array(
         'http' => array(
         'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
