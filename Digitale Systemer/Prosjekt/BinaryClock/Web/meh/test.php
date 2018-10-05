@@ -1,14 +1,6 @@
 <pre>
 <?php
-function Redirect($url, $permanent = false)
-{
-    if (headers_sent() === false)
-    {
-        header('Location: ' . $url, true, ($permanent === true) ? 301 : 302);
-    }
-
-    exit();
-}
-
-Redirect('http://www.google.com/', false);
+echo '<script type="text/javascript">
+           window.location = "http://www.google.com/"
+      </script>';
 ?>
