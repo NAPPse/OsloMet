@@ -1,3 +1,4 @@
+//Pull request test
 //Lys og- bryterpin nummere
 const int rb1=11,rb2=4,gu1=12,gu2=5,grb1=13,grb2=6,
           rf1=10,rf2=7,gf1=9,gf2=8,k1=2,k2=3;
